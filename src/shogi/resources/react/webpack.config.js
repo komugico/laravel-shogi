@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        
+        home_index: path.resolve(__dirname, "src/home/index.jsx"),
     },
     output: {
         path: path.resolve(__dirname, "../../public/js/react/") ,

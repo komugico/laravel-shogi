@@ -32,7 +32,7 @@ class Header extends React.Component {
 
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/">Web Game</Navbar.Brand>
+                <Navbar.Brand href="/">Shogi</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {navbarContent}

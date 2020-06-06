@@ -1,13 +1,14 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home | Shogi</title>
-    </head>
-    <body>
-        <div id="home"></div>
-        <script src="{{ asset('/js/react/home_index.js') }}"></script>
-    </body>
-</html>
+@extends('share.base')
+
+@section('title', 'Home')
+
+@section('styles')
+@endsection
+
+@section('contents')
+    <div id="home"></div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('/js/react/home_index.js') }}"></script>
+@endsection

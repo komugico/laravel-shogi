@@ -5,15 +5,21 @@ import { Button, ButtonToolbar, ButtonGroup, Nav, Navbar, NavDropdown } from 're
 class Header extends React.Component {
     constructor() {
         super();
+        this.postLogout = this.postLogout.bind(this);
+    }
+
+    postLogout() {
+        event.preventDefault();
+        document.getElementById("logout-form").submit();
     }
 
     tagNavbarContent() {
         if (this.props.username != null) {
             return (
                 <Nav className="mr-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/home">Home</Nav.Link>
                     <NavDropdown title="Application" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#">Coming Soon...</NavDropdown.Item>
+                        <NavDropdown.Item href="/shogi">Main</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             );
@@ -27,8 +33,32 @@ class Header extends React.Component {
         }
     }
 
+    tagNavbarForm() {
+        if (this.props.username != null) {
+            return (
+                <ButtonToolbar>
+                    <ButtonGroup>
+                        <Button variant="outline-secondary" href="#">{this.props.username}</Button>
+                        <Button variant="outline-danger" onClick={this.postLogout}>Logout</Button>
+                    </ButtonGroup>
+                </ButtonToolbar>
+            );
+        }
+        else {
+            return (
+                <ButtonToolbar>
+                    <ButtonGroup>
+                        <Button variant="outline-primary" href="/login">Login</Button>
+                        <Button variant="outline-success" href="/register">Signup</Button>
+                    </ButtonGroup>
+                </ButtonToolbar>
+            );
+        }
+    }
+
     render() {
         let navbarContent = this.tagNavbarContent();
+        let nabvarForm = this.tagNavbarForm();
 
         return (
             <Navbar bg="light" expand="lg">
@@ -36,13 +66,22 @@ class Header extends React.Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {navbarContent}
+                    {nabvarForm}
                 </Navbar.Collapse>
             </Navbar>
         );
     }
 }
 
+
+let username = null;
+if (document.getElementById("username") != null) {
+    username = document.getElementById("username").textContent;
+}
+
 ReactDOM.render(
-    <Header />,
+    <Header
+        username={username}
+    />,
     document.getElementById("header")
 );

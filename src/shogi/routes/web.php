@@ -13,7 +13,6 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@home');
+Route::get('/home', 'HomeController@home');
 Route::get('/shogi', 'ShogiController@index');
-
-Route::get('/home', 'HomeController@index')->name('home');

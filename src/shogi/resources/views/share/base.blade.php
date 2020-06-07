@@ -11,6 +11,12 @@
     </head>
     <body>
         <div id="header"></div>
+        @auth
+            <div id="username" type="hidden" style="display: none">{{ Auth::user()->name }}</div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @endauth
         
         <div id="contents">
             @yield('contents')

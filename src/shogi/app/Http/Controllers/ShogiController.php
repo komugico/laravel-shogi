@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class ShogiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
-        return view('shogi/index');
+        return view('shogi.index');
     }
 }
